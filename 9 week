@@ -6,3 +6,6 @@ def check_keys(data):
         if key not in data:
             errors.append(f"Missing key: {key}")
     return errors
+if __name__ == "__main__":
+    data = {"alpha": 0.5, "n_iter": 100}
+    print(check_keys(data))
