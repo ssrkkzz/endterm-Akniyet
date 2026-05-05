@@ -1,0 +1,20 @@
+def validate_types_and_ranges(data: dict):
+    errors = []
+
+    # alpha
+    if not isinstance(data.get("alpha"), (int, float)):
+        errors.append("alpha must be float")
+    elif not (0 <= float(data["alpha"]) <= 1):
+        errors.append("alpha out of range [0..1]")
+
+    # n_iter
+    if not isinstance(data.get("n_iter"), int):
+        errors.append("n_iter must be int")
+    elif data["n_iter"] <= 0:
+        errors.append("n_iter must be > 0")
+
+    # name
+    if not isinstance(data.get("name"), str) or not data["name"].strip():
+        errors.append("name must be non-empty string")
+
+    return errors
