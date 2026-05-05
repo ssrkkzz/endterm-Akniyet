@@ -1,0 +1,27 @@
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.post("/compare")
+def compare(data: dict):
+    a = data.get("a", {})
+    b = data.get("b", {})
+
+    errors_a = validate_settings(a)
+    errors_b = validate_settings(b)
+
+    response = {
+        "ok": not (errors_a or errors_b),
+        "errors": {
+            "a": errors_a,
+            "b": errors_b
+        },
+        "diff": {},
+        "plot": None
+    }
+
+    if not errors_a and not errors_b:
+        response["diff"] = diff(a, b)
+        response["plot"] = plot_configs(a, b)
+
+    return response
