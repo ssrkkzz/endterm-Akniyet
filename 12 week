@@ -1,0 +1,10 @@
+def diff(a: dict, b: dict):
+    result = {}
+
+    keys = {"alpha", "n_iter", "name"}
+
+    for k in keys:
+        if a.get(k) != b.get(k):
+            result[k] = (a.get(k), b.get(k))
+
+    return result
