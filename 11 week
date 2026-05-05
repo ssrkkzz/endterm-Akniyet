@@ -1,0 +1,13 @@
+def validate_settings(data: dict):
+    errors = []
+
+    # keys
+    missing = {"alpha", "n_iter", "name"} - set(data.keys())
+    if missing:
+        errors.append(f"Missing keys: {missing}")
+        return errors
+
+    # reuse checks
+    errors += validate_types_and_ranges(data)
+
+    return errors
