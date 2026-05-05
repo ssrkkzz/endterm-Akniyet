@@ -1,0 +1,21 @@
+import matplotlib.pyplot as plt
+
+def plot_configs(a: dict, b: dict, filename="compare.png"):
+    fields = ["alpha", "n_iter"]
+
+    a_vals = [a[f] for f in fields]
+    b_vals = [b[f] for f in fields]
+
+    x = range(len(fields))
+
+    plt.bar([i - 0.2 for i in x], a_vals, width=0.4, label="A")
+    plt.bar([i + 0.2 for i in x], b_vals, width=0.4, label="B")
+
+    plt.xticks(list(x), fields)
+    plt.legend()
+    plt.title("Config comparison")
+
+    plt.savefig(filename)
+    plt.close()
+
+    return filename
