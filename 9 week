@@ -1,11 +1,12 @@
-# 9
-def check_keys(data):
-    required = ["alpha", "n_iter", "name"]
-    errors = []
-    for key in required:
-        if key not in data:
-            errors.append(f"Missing key: {key}")
-    return errors
-if __name__ == "__main__":
-    data = {"alpha": 0.5, "n_iter": 100}
-    print(check_keys(data))
+import json
+
+REQUIRED_KEYS = {"alpha", "n_iter", "name"}
+
+def load_json(path: str):
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return data
+
+def check_keys(data: dict):
+    missing = REQUIRED_KEYS - set(data.keys())
+    return list(missing)  # пустой список = ок
