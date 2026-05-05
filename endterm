@@ -1,0 +1,8 @@
+# 9
+def check_keys(data):
+    required = ["alpha", "n_iter", "name"]
+    errors = []
+    for key in required:
+        if key not in data:
+            errors.append(f"Missing key: {key}")
+    return errors
