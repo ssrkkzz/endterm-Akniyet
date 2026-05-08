@@ -9,4 +9,12 @@ def load_json(path: str):
 
 def check_keys(data: dict):
     missing = REQUIRED_KEYS - set(data.keys())
-    return list(missing)  # пустой список = ок
+    return list(missing)
+
+data = load_json("settings.json")
+result = check_keys(data)
+
+if not result:
+    print("Все ключи есть")
+else:
+    print("Отсутствуют:", result)
