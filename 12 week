@@ -8,3 +8,17 @@ def diff(a: dict, b: dict):
             result[k] = (a.get(k), b.get(k))
 
     return result
+
+a = {
+    "alpha": 0.1,
+    "n_iter": 100,
+    "name": "model1"
+}
+
+b = {
+    "alpha": 0.5,
+    "n_iter": 100,
+    "name": "model2"
+}
+
+print(diff(a, b))
