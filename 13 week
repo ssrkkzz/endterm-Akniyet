@@ -19,3 +19,15 @@ def plot_configs(a: dict, b: dict, filename="compare.png"):
     plt.close()
 
     return filename
+
+a = {
+    "alpha": 0.1,
+    "n_iter": 100
+}
+
+b = {
+    "alpha": 0.5,
+    "n_iter": 200
+}
+
+plot_configs(a, b)
