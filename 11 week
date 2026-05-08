@@ -1,13 +1,26 @@
 def validate_settings(data: dict):
     errors = []
 
-    # keys
     missing = {"alpha", "n_iter", "name"} - set(data.keys())
     if missing:
         errors.append(f"Missing keys: {missing}")
         return errors
 
-    # reuse checks
     errors += validate_types_and_ranges(data)
 
     return errors
+
+data = {
+    "alpha": 1.5,
+    "n_iter": -10,
+    "name": ""
+}
+
+errors = validate_settings(data)
+
+if not errors:
+    print("Настройки корректны")
+else:
+    print("Ошибки:")
+    for e in errors:
+        print("-", e)
